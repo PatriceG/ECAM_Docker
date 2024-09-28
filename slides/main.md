@@ -57,7 +57,7 @@ Qu'est-ce que Docker?
 
 - C'est pratique pour essayer un outil ou l'installer rapidement sur un poste de dév.
 
-- Ainsi pour les TP Industriation des Dév, SonarQube a été installé sur les VM simplement à l'aide de la commande:
+- Ainsi pour les TP Industrialisation des Dév, SonarQube a été installé sur les VM simplement à l'aide de la commande:
 
 ```bash
 docker run  -d \
@@ -88,7 +88,9 @@ docker run  -d \
 
 - _docker build -t &lt;nom_image&gt; ._ : crée une image à partir d'un Dockerfile situé dans le dossier courant
 - _docker run -d -p 8080:80 &lt;nom_image&gt;_: crée un container à partir de l'image et le démarre en arrière plan
-  
+
+_Note:_ on peut n'utiliser qu'un préfixe d'_id_ du moment qu'il est unique (on ne saisit souvent que les 2 ou 3 premiers caractères)
+
 ---
 
 # Principales commandes de Docker
@@ -140,7 +142,7 @@ Création du Dockefile
 
 Les commandes ci-dessous sont à ajouter au fichier Dockerfile:
 
-Dans cet image de base, nous allons installer nginx:
+Dans cette image de base, nous allons installer nginx:
 
 ```dockerfile
 FROM ubuntu
@@ -247,15 +249,15 @@ docker build . -t ecam/nginx:0.0.1
 Créer un dossier appelé _html_ dans le dossier courant (contenant le Dockerfile) et dans ce dossier, créer un fichier _index.html_ avec ce contenu:
 
 ```html
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-&lt;title&gt;Hello World&lt;/title&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;h1&gt;Hello World!&lt;/h1&gt;
-&lt;/body&gt;
-&lt;/html&gt;
+<!DOCTYPE html>
+<html>
+<head>
+<title>Hello World</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+</body>
+</html>
 ```
 
 ---
