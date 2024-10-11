@@ -269,7 +269,7 @@ Créer un dossier appelé _html_ dans le dossier courant (contenant le Dockerfil
 - Il est aussi nécessaire de mapper le dossier html du container sur le dossier html de la machine hôte.
 
 ```bash
-docker run -d -p 8000:80 -v $(pwd)/html:/usr/share/nginx/html ecam/nginx
+docker run -d -p 8000:80 -v $(pwd)/html:/usr/share/nginx/html ecam/nginx:0.0.1
 ```
 
 Vérifier l'état du container:
