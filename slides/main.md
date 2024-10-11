@@ -202,7 +202,7 @@ server {
     listen 80 default_server;
     listen [::]:80 default_server;
     
-    /usr/share/nginx/html;
+    root /usr/share/nginx/html;
     index index.html index.htm;
 
     server_name _;
