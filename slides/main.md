@@ -216,8 +216,10 @@ server {
 
 # Construction de l'image
 
+On associe généralement un tag (a.k.a version) à une image pour pouvoir en référencer une version spécifique (le 0.0.1 ci-dessous)
+
 ```bash
-docker build . -t ecam/nginx
+docker build . -t ecam/nginx:0.0.1
 ```
 
 Cette commande lance l'exécution des instructions du Dockerfile et la construction de l'image couche par couche (il y a une couche créée par commande dans le Dockerfile)
@@ -231,15 +233,8 @@ Cette commande lance l'exécution des instructions du Dockerfile et la construct
 => exporting to image
 => => exporting layers
 => => writing image sha256:ad8e55ba95f0e50c6b5c70afbd262cfb7257d1d687faff1b9af85f1b642384e1
-=> => naming to docker.io/ecam/nginx
+=> => naming to docker.io/ecam/nginx:0.0.1
 
-```
-
-_Note:_ on associe généralement un tag (a.k.a version) à une image pour pouvoir en référencer une version spécifique.
-
-
-```bash
-docker build . -t ecam/nginx:0.0.1
 ```
 
 ---
@@ -266,10 +261,12 @@ Créer un dossier appelé _html_ dans le dossier courant (contenant le Dockerfil
 
 - Le port 80 est _exporté_ depuis le container, mais il doit être mappé sur un port de la machine hôte pour être accessible.
 
+- Pour plus de facilité pour gérer le container par la suite, il est nommé 'nginx' via le paramètre --name .
+
 - Il est aussi nécessaire de mapper le dossier html du container sur le dossier html de la machine hôte.
 
 ```bash
-docker run -d -p 8000:80 -v $(pwd)/html:/usr/share/nginx/html ecam/nginx:0.0.1
+docker run -d -p 8000:80 --name nginx -v $(pwd)/html:/usr/share/nginx/html ecam/nginx:0.0.1
 ```
 
 Vérifier l'état du container:
@@ -281,6 +278,32 @@ docker ps
 La page d'accueil de nginx est accessible à l'adresse http://localhost:8000 
 
 ---
+
+# Arrêt et suppression du container
+
+Arrêter le container nginx:
+
+```bash
+docker stop nginx
+```
+
+Supprimer le container nginx:
+
+```bash
+docker rm nginx
+```
+
+Si plus aucun container n'utilise l'image, on peut aussi supprimer l'image par:
+
+```bash
+docker rmi ecam/nginx:0.0.1
+```
+
+Note: on peut aussi supprimer toutes les images inutilées par:
+
+```bash
+docker image prune
+```
 
 # Installation de nginx 
 Version sans dockerfile
